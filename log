@@ -10,3 +10,17 @@ Thu 25 Apr 2024 01:20:14 AM UTC:
  tests:  1|5
 total_score: 10/70
 7228a96
+Thu 25 Apr 2024 03:23:03 AM UTC: 
+ hashmap.c | 46 +++++++++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 41 insertions(+), 5 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘firstMap’:
+hashmap.c:97:13: error: ‘HashMap’ {aka ‘struct HashMap’} has no member named ‘key’
+   97 |   return map->key;
+      |             ^~
+hashmap.c:98:1: error: control reaches end of non-void function [-Werror=return-type]
+   98 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+e0b0ea8
