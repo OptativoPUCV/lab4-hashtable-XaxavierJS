@@ -49,3 +49,336 @@ test.c:14:6: note: destination object referenced by ‘restrict’-qualified arg
 cc1: all warnings being treated as errors
 Compilation failed
 a475566
+Thu 25 Apr 2024 03:27:23 AM UTC: 
+ hashmap.c | 102 --------------------------------------------------------------
+ 1 file changed, 102 deletions(-)
+test.c:41:1: error: unknown type name ‘HashMap’
+   41 | HashMap* initializeMap(){
+      | ^~~~~~~
+test.c: In function ‘initializeMap’:
+test.c:43:5: error: unknown type name ‘HashMap’
+   43 |     HashMap * map = (HashMap *)malloc(sizeof(HashMap));
+      |     ^~~~~~~
+test.c:43:22: error: ‘HashMap’ undeclared (first use in this function)
+   43 |     HashMap * map = (HashMap *)malloc(sizeof(HashMap));
+      |                      ^~~~~~~
+test.c:43:22: note: each undeclared identifier is reported only once for each function it appears in
+test.c:43:31: error: expected expression before ‘)’ token
+   43 |     HashMap * map = (HashMap *)malloc(sizeof(HashMap));
+      |                               ^
+test.c:44:8: error: request for member ‘buckets’ in something not a structure or union
+   44 |     map->buckets = (Pair **) calloc (10,sizeof(Pair *));
+      |        ^~
+test.c:44:21: error: ‘Pair’ undeclared (first use in this function)
+   44 |     map->buckets = (Pair **) calloc (10,sizeof(Pair *));
+      |                     ^~~~
+test.c:44:28: error: expected expression before ‘)’ token
+   44 |     map->buckets = (Pair **) calloc (10,sizeof(Pair *));
+      |                            ^
+test.c:45:8: error: request for member ‘capacity’ in something not a structure or union
+   45 |     map->capacity = 10;
+      |        ^~
+test.c:52:12: error: request for member ‘buckets’ in something not a structure or union
+   52 |         map->buckets[hashs[i]] =
+      |            ^~
+test.c:53:9: error: implicit declaration of function ‘createPair’ [-Werror=implicit-function-declaration]
+   53 |         createPair(_strdup(words[i]),_strdup(msg));
+      |         ^~~~~~~~~~
+test.c:56:8: error: request for member ‘size’ in something not a structure or union
+   56 |     map->size=6;
+      |        ^~
+test.c:48:9: error: variable ‘hashs’ set but not used [-Werror=unused-but-set-variable]
+   48 |     int hashs[6]={8,7,6,0,4,2}; //using function in hashmap.c
+      |         ^~~~~
+test.c: In function ‘createMap_test1’:
+test.c:65:5: error: unknown type name ‘HashMap’
+   65 |     HashMap *map= createMap(10);
+      |     ^~~~~~~
+test.c:65:19: error: implicit declaration of function ‘createMap’ [-Werror=implicit-function-declaration]
+   65 |     HashMap *map= createMap(10);
+      |                   ^~~~~~~~~
+test.c:65:19: error: initialization of ‘int *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+test.c: In function ‘createMap_test2’:
+test.c:76:5: error: unknown type name ‘HashMap’
+   76 |     HashMap *map = createMap(10);
+      |     ^~~~~~~
+test.c:76:20: error: initialization of ‘int *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+   76 |     HashMap *map = createMap(10);
+      |                    ^~~~~~~~~
+test.c:79:13: error: request for member ‘buckets’ in something not a structure or union
+   79 |       if(map->buckets[i]!=NULL) {err_msg("bucket no nulo"); return 0;}
+      |             ^~
+test.c: In function ‘createMap_test3’:
+test.c:84:5: error: unknown type name ‘HashMap’
+   84 |     HashMap *map = createMap(10);
+      |     ^~~~~~~
+test.c:84:20: error: initialization of ‘int *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+   84 |     HashMap *map = createMap(10);
+      |                    ^~~~~~~~~
+test.c:85:11: error: request for member ‘size’ in something not a structure or union
+   85 |     if(map->size !=0 || map->capacity!=10 || map->current!=-1){
+      |           ^~
+test.c:85:28: error: request for member ‘capacity’ in something not a structure or union
+   85 |     if(map->size !=0 || map->capacity!=10 || map->current!=-1){
+      |                            ^~
+test.c:85:49: error: request for member ‘current’ in something not a structure or union
+   85 |     if(map->size !=0 || map->capacity!=10 || map->current!=-1){
+      |                                                 ^~
+test.c:90:9: error: assignment to ‘int *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+   90 |     map = createMap(5);
+      |         ^
+test.c:91:11: error: request for member ‘size’ in something not a structure or union
+   91 |     if(map->size !=0 || map->capacity!=5 || map->current!=-1){
+      |           ^~
+test.c:91:28: error: request for member ‘capacity’ in something not a structure or union
+   91 |     if(map->size !=0 || map->capacity!=5 || map->current!=-1){
+      |                            ^~
+test.c:91:48: error: request for member ‘current’ in something not a structure or union
+   91 |     if(map->size !=0 || map->capacity!=5 || map->current!=-1){
+      |                                                ^~
+test.c: In function ‘hash_test1’:
+test.c:101:14: error: implicit declaration of function ‘hash’ [-Werror=implicit-function-declaration]
+  101 |     long pos=hash("computador",10);
+      |              ^~~~
+test.c: In function ‘compare_test’:
+test.c:132:8: error: implicit declaration of function ‘is_equal’ [-Werror=implicit-function-declaration]
+  132 |     if(is_equal("hola","hola")!=1) printf("error: \"hola\"!=\"hola\"\n");
+      |        ^~~~~~~~
+test.c: In function ‘insert_test1’:
+test.c:139:5: error: unknown type name ‘HashMap’
+  139 |     HashMap *map = initializeMap();
+      |     ^~~~~~~
+test.c:141:5: error: implicit declaration of function ‘insertMap’ [-Werror=implicit-function-declaration]
+  141 |     insertMap(map, _strdup(":key"),_strdup("value"));
+      |     ^~~~~~~~~
+test.c:143:11: error: request for member ‘buckets’ in something not a structure or union
+  143 |     if(map->buckets[3] == NULL){
+      |           ^~
+test.c:148:20: error: request for member ‘buckets’ in something not a structure or union
+  148 |     if( strcmp (map->buckets[3]->key, ":key")!=0 ||
+      |                    ^~
+test.c:149:25: error: request for member ‘buckets’ in something not a structure or union
+  149 |              strcmp (map->buckets[3]->value, "value")!=0 ){
+      |                         ^~
+test.c:154:11: error: request for member ‘size’ in something not a structure or union
+  154 |     if(map->size != 7){
+      |           ^~
+test.c:159:8: error: ‘enlarge_called’ undeclared (first use in this function)
+  159 |     if(enlarge_called == 1){
+      |        ^~~~~~~~~~~~~~
+test.c: In function ‘insert_test2’:
+test.c:169:5: error: unknown type name ‘HashMap’
+  169 |     HashMap *map = initializeMap();
+      |     ^~~~~~~
+test.c:172:11: error: request for member ‘buckets’ in something not a structure or union
+  172 |     if(map->buckets[1] != NULL){
+      |           ^~
+test.c: In function ‘insert_test3’:
+test.c:180:5: error: unknown type name ‘HashMap’
+  180 |     HashMap *map = initializeMap();
+      |     ^~~~~~~
+test.c:183:11: error: request for member ‘buckets’ in something not a structure or union
+  183 |     if(map->buckets[9]==NULL || !is_equal(map->buckets[9]->value,"value") ){
+      |           ^~
+test.c:183:46: error: request for member ‘buckets’ in something not a structure or union
+  183 |     if(map->buckets[9]==NULL || !is_equal(map->buckets[9]->value,"value") ){
+      |                                              ^~
+test.c: In function ‘insert_test4’:
+test.c:193:5: error: unknown type name ‘HashMap’
+  193 |     HashMap *map = initializeMap();
+      |     ^~~~~~~
+test.c:196:11: error: request for member ‘buckets’ in something not a structure or union
+  196 |     if(map->buckets[9]==NULL || !is_equal(map->buckets[9]->value,"value") ){
+      |           ^~
+test.c:196:46: error: request for member ‘buckets’ in something not a structure or union
+  196 |     if(map->buckets[9]==NULL || !is_equal(map->buckets[9]->value,"value") ){
+      |                                              ^~
+test.c:203:8: error: request for member ‘size’ in something not a structure or union
+  203 |     map->size=6;
+      |        ^~
+test.c:206:11: error: request for member ‘buckets’ in something not a structure or union
+  206 |     if(map->buckets[1]==NULL || !is_equal(map->buckets[1]->value,"value") ){
+      |           ^~
+test.c:206:46: error: request for member ‘buckets’ in something not a structure or union
+  206 |     if(map->buckets[1]==NULL || !is_equal(map->buckets[1]->value,"value") ){
+      |                                              ^~
+test.c: In function ‘insert_test5’:
+test.c:218:5: error: unknown type name ‘HashMap’
+  218 |     HashMap *map = initializeMap();
+      |     ^~~~~~~
+test.c:219:8: error: request for member ‘size’ in something not a structure or union
+  219 |     map->size = 7; //se fuerza size=7
+      |        ^~
+test.c:223:8: error: ‘enlarge_called’ undeclared (first use in this function)
+  223 |     if(enlarge_called == 0){
+      |        ^~~~~~~~~~~~~~
+test.c: In function ‘search_test1’:
+test.c:234:5: error: unknown type name ‘HashMap’
+  234 |     HashMap *map = initializeMap();
+      |     ^~~~~~~
+test.c:236:18: error: implicit declaration of function ‘searchMap’ [-Werror=implicit-function-declaration]
+  236 |     void* ret =  searchMap(map, "carro");
+      |                  ^~~~~~~~~
+test.c:236:18: error: initialization of ‘void *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+test.c:242:18: error: request for member ‘buckets’ in something not a structure or union
+  242 |     if(ret != map->buckets[7]) {
+      |                  ^~
+test.c:248:11: error: request for member ‘current’ in something not a structure or union
+  248 |     if(map->current!=7){
+      |           ^~
+test.c: In function ‘search_test2’:
+test.c:257:5: error: unknown type name ‘HashMap’
+  257 |     HashMap *map = initializeMap();
+      |     ^~~~~~~
+test.c:259:8: error: request for member ‘buckets’ in something not a structure or union
+  259 |     map->buckets[9]=createPair(_strdup("key"),_strdup("value"));
+      |        ^~
+test.c:262:5: error: unknown type name ‘Pair’
+  262 |     Pair* ret =  searchMap(map, "key");
+      |     ^~~~
+test.c:262:18: error: initialization of ‘int *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+  262 |     Pair* ret =  searchMap(map, "key");
+      |                  ^~~~~~~~~
+test.c:268:18: error: request for member ‘buckets’ in something not a structure or union
+  268 |     if(ret != map->buckets[9]) {
+      |                  ^~
+test.c: In function ‘search_test3’:
+test.c:277:5: error: unknown type name ‘HashMap’
+  277 |     HashMap *map = initializeMap();
+      |     ^~~~~~~
+test.c:279:30: error: comparison between pointer and integer [-Werror]
+  279 |     if(searchMap(map, "holo")!=NULL) {
+      |                              ^~
+test.c:280:70: error: request for member ‘buckets’ in something not a structure or union
+  280 |         sprintf(msg,"searchMap retorna un elemento con clave %s", map->buckets[map->current]->key);
+      |                                                                      ^~
+test.c:280:83: error: request for member ‘current’ in something not a structure or union
+  280 |         sprintf(msg,"searchMap retorna un elemento con clave %s", map->buckets[map->current]->key);
+      |                                                                                   ^~
+test.c: In function ‘erase_test1’:
+test.c:290:5: error: unknown type name ‘HashMap’
+  290 |     HashMap *map = initializeMap();
+      |     ^~~~~~~
+test.c:292:5: error: implicit declaration of function ‘eraseMap’ [-Werror=implicit-function-declaration]
+  292 |     eraseMap(map, "olla");
+      |     ^~~~~~~~
+test.c:294:11: error: request for member ‘buckets’ in something not a structure or union
+  294 |     if(map->buckets[0]==NULL){
+      |           ^~
+test.c:299:11: error: request for member ‘buckets’ in something not a structure or union
+  299 |     if(map->buckets[0]->key !=NULL) {
+      |           ^~
+test.c:304:11: error: request for member ‘size’ in something not a structure or union
+  304 |     if(map->size != 5){
+      |           ^~
+test.c: In function ‘erase_test2’:
+test.c:315:5: error: unknown type name ‘HashMap’
+  315 |     HashMap *map = initializeMap();
+      |     ^~~~~~~
+test.c:317:8: error: request for member ‘buckets’ in something not a structure or union
+  317 |     map->buckets[9]=createPair(_strdup("key"),_strdup("value"));
+      |        ^~
+test.c:322:11: error: request for member ‘buckets’ in something not a structure or union
+  322 |     if(map->buckets[9]->key!=NULL){
+      |           ^~
+test.c: In function ‘erase_test3’:
+test.c:331:5: error: unknown type name ‘HashMap’
+  331 |     HashMap *map = initializeMap();
+      |     ^~~~~~~
+test.c:335:11: error: request for member ‘buckets’ in something not a structure or union
+  335 |     if(map->buckets[2]->key==NULL){
+      |           ^~
+test.c: In function ‘first_test’:
+test.c:346:5: error: unknown type name ‘HashMap’
+  346 |     HashMap *map = initializeMap();
+      |     ^~~~~~~
+test.c:349:5: error: unknown type name ‘Pair’
+  349 |     Pair* aux = firstMap(map);
+      |     ^~~~
+test.c:349:17: error: implicit declaration of function ‘firstMap’ [-Werror=implicit-function-declaration]
+  349 |     Pair* aux = firstMap(map);
+      |                 ^~~~~~~~
+test.c:349:17: error: initialization of ‘int *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+test.c:355:18: error: request for member ‘buckets’ in something not a structure or union
+  355 |     if(aux != map->buckets[0]){
+      |                  ^~
+test.c:360:11: error: request for member ‘current’ in something not a structure or union
+  360 |     if(map->current != 0){
+      |           ^~
+test.c:368:8: error: request for member ‘buckets’ in something not a structure or union
+  368 |     map->buckets[0]->key=NULL;
+      |        ^~
+test.c:371:9: error: assignment to ‘int *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+  371 |     aux = firstMap(map);
+      |         ^
+test.c:373:18: error: request for member ‘buckets’ in something not a structure or union
+  373 |     if(aux != map->buckets[2]){
+      |                  ^~
+test.c:378:11: error: request for member ‘current’ in something not a structure or union
+  378 |     if(map->current != 2){
+      |           ^~
+test.c: In function ‘next_test’:
+test.c:390:5: error: unknown type name ‘HashMap’
+  390 |     HashMap *map = initializeMap();
+      |     ^~~~~~~
+test.c:393:8: error: request for member ‘current’ in something not a structure or union
+  393 |     map->current=0;
+      |        ^~
+test.c:394:8: error: implicit declaration of function ‘nextMap’ [-Werror=implicit-function-declaration]
+  394 |     if(nextMap(map)!=map->buckets[2]){
+      |        ^~~~~~~
+test.c:394:25: error: request for member ‘buckets’ in something not a structure or union
+  394 |     if(nextMap(map)!=map->buckets[2]){
+      |                         ^~
+test.c:400:11: error: request for member ‘current’ in something not a structure or union
+  400 |     if(map->current!=2){
+      |           ^~
+test.c:406:8: error: request for member ‘current’ in something not a structure or union
+  406 |     map->current=7;
+      |        ^~
+test.c:407:25: error: request for member ‘buckets’ in something not a structure or union
+  407 |     if(nextMap(map)!=map->buckets[8]){
+      |                         ^~
+test.c:416:20: error: comparison between pointer and integer [-Werror]
+  416 |     if(nextMap(map)!=NULL){
+      |                    ^~
+test.c: In function ‘enlarge_test’:
+test.c:426:5: error: unknown type name ‘HashMap’
+  426 |     HashMap *map = initializeMap();
+      |     ^~~~~~~
+test.c:429:23: error: request for member ‘buckets’ in something not a structure or union
+  429 |     void* value3 = map->buckets[0]->value;
+      |                       ^~
+test.c:430:23: error: request for member ‘buckets’ in something not a structure or union
+  430 |     void* value5 = map->buckets[2]->value;
+      |                       ^~
+test.c:431:23: error: request for member ‘buckets’ in something not a structure or union
+  431 |     void* value4 = map->buckets[4]->value;
+      |                       ^~
+test.c:433:5: error: implicit declaration of function ‘enlarge’ [-Werror=implicit-function-declaration]
+  433 |     enlarge(map);
+      |     ^~~~~~~
+test.c:435:11: error: request for member ‘buckets’ in something not a structure or union
+  435 |     if(map->buckets[0]->value!=value3 || map->buckets[2]!=NULL || map->buckets[12]->value != value5 || map->buckets[4]->value!=value4){
+      |           ^~
+test.c:435:45: error: request for member ‘buckets’ in something not a structure or union
+  435 |     if(map->buckets[0]->value!=value3 || map->buckets[2]!=NULL || map->buckets[12]->value != value5 || map->buckets[4]->value!=value4){
+      |                                             ^~
+test.c:435:70: error: request for member ‘buckets’ in something not a structure or union
+  435 |     if(map->buckets[0]->value!=value3 || map->buckets[2]!=NULL || map->buckets[12]->value != value5 || map->buckets[4]->value!=value4){
+      |                                                                      ^~
+test.c:435:107: error: request for member ‘buckets’ in something not a structure or union
+  435 |     if(map->buckets[0]->value!=value3 || map->buckets[2]!=NULL || map->buckets[12]->value != value5 || map->buckets[4]->value!=value4){
+      |                                                                                                           ^~
+test.c:437:22: error: request for member ‘capacity’ in something not a structure or union
+  437 |         for(i=0;i<map->capacity;i++){
+      |                      ^~
+test.c:438:19: error: request for member ‘buckets’ in something not a structure or union
+  438 |             if(map->buckets[i]==NULL) sprintf(msg,"%.100s(null)  ",msg);
+      |                   ^~
+test.c:439:59: error: request for member ‘buckets’ in something not a structure or union
+  439 |             else sprintf(msg,"%.100s%s  ", msg, (char*)map->buckets[i]->value);
+      |                                                           ^~
+cc1: all warnings being treated as errors
+Compilation failed
+d2c509b
