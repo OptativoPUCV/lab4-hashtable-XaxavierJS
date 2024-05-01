@@ -79,15 +79,20 @@ HashMap *createMap(long capacity) {
 void eraseMap(HashMap *map, char *key) {}
 
 Pair *searchMap(HashMap *map, char *key) {
-  long pos = hash(key, map->capacity);
-  while (map->buckets[pos] != NULL && map->buckets[pos]->key != NULL) {
-    if (is_equal(map->buckets[pos]->key, key)) {
-      return map->buckets[pos];
-    }
-    pos = (pos + 1) % map->capacity;
+  if (map == NULL || key == NULL){
+    return NULL;
   }
-  map->current = pos;
-  return map->buckets[pos];
+  long charmander = hash(key, map->capacity);
+  while(map->buckets[charmander] != NULL && map->buckets[charmander]->key != NULL){
+    if (is_equal(map->buckets[charmander], key)){
+      return map->buckets[charmander];
+    }
+    charmander = (charmander + 1) % map->capacity;
+    
+  }
+  
+  map->current = charmander;
+  return map->buckets[charmander];
 }
 
 Pair *firstMap(HashMap *map) {
