@@ -82,17 +82,15 @@ Pair *searchMap(HashMap *map, char *key) {
   if (map == NULL || key == NULL){
     return NULL;
   }
-  long charmander = hash(key, map->capacity);
-  while(map->buckets[charmander] != NULL && map->buckets[charmander]->key != NULL){
-    if (is_equal(map->buckets[charmander], key)){
-      return map->buckets[charmander];
+  long pos = hash(key, map->capacity);
+  while (map->buckets[pos] != NULL){
+    if (is_equal(map->buckets[pos], key)){
+      return map->buckets[pos];
     }
-    charmander = (charmander + 1) % map->capacity;
-
+    pos = (pos + 1) % map->capacity;
+    
   }
-
-  map->current = charmander;
-  return map->buckets[charmander];
+  return map->buckets[pos];
 }
 
 Pair *firstMap(HashMap *map) {
