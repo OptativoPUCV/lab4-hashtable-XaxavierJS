@@ -41,11 +41,11 @@ int is_equal(void *key1, void *key2) {
 
 void insertMap(HashMap *map, char *key, void *value) {
   if (map == NULL || key == NULL){
-    return NULL;
+    return;
   }
   long charmander = hash(key, map->capacity);
   while(map->buckets[charmander] != NULL && map->buckets[charmander]->key != NULL){
-    if (is_qual(map->buckets[charmander], key)){
+    if (is_equal(map->buckets[charmander], key)){
       map->buckets[charmander]->value = value;
     }
     charmander = (charmander + 1) % map->capacity;
