@@ -79,9 +79,7 @@ HashMap *createMap(long capacity) {
 void eraseMap(HashMap *map, char *key) {}
 
 Pair *searchMap(HashMap *map, char *key) {
-  if (map == NULL || key == NULL){
-    return NULL;
-  }
+
   long charmander = hash(key, map->capacity);
   while(map->buckets[charmander] != NULL && map->buckets[charmander]->key != NULL){
     if (is_equal(map->buckets[charmander], key)){
