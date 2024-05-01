@@ -40,21 +40,24 @@ int is_equal(void *key1, void *key2) {
 }
 
 void insertMap(HashMap *map, char *key, void *value) {
-
-  Pair *holaNoSeQueHagoPeroFunciona = createPair(key, value);
-
-  unsigned long pos = hash(key, map->capacity);
-
-  while (map->buckets[pos] != NULL && map->buckets[pos]->key != NULL &&
-         is_equal(map->buckets[pos]->key, key) == 1) {
-    pos = (pos + 1) % map->capacity;
+  if (map == NULL || key == NULL){
+    return NULL;
   }
-  if (map->buckets[pos] == NULL || map->buckets[pos]->key == NULL) {
-
-    map->buckets[pos] = holaNoSeQueHagoPeroFunciona;
-    map->size++;
-    map->current = pos;
+  long charmander = hash(key, map->capacity);
+  while(map->buckets[charmander] != NULL && map->buckets[charmander]->key != NULL){
+    if (is_qual(map->buckets[charmander], key)){
+      map->buckets[charmander]->value = value;
+    }
+    charmander = (charmander + 1) % map->capacity;
   }
+  if (map->size == map->capacity){
+    enlarge(map);
+    charmander = hash(key, map->capacity);
+  }
+  Pair *charizar = createPair(key, value);
+  map->buckets[charmander] = charizar;
+  map->size++;
+  map->current = charmander;
 }
 
 void enlarge(HashMap *map) {
