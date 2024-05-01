@@ -78,13 +78,10 @@ HashMap *createMap(long capacity) {
 
 void eraseMap(HashMap *map, char *key) {
     if (map == NULL || key == NULL) return;
-
     long pos = hash(key, map->capacity);
     long initialPos = pos;
-
     while (map->buckets[pos] != NULL) {
         if (map->buckets[pos]->key != NULL && is_equal(map->buckets[pos], key)) {
-            printf("Eliminando clave en posición %ld.\n", pos);
             map->buckets[pos]->key = NULL;
             map->size--;
             return;
@@ -92,7 +89,6 @@ void eraseMap(HashMap *map, char *key) {
         pos = (pos + 1) % map->capacity;
         if (pos == initialPos) break;
     }
-    printf("No se encontró la clave para eliminar.\n"); 
 }
 
 
